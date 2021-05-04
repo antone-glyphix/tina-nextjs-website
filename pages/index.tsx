@@ -6,14 +6,9 @@ import Layout from '../components/layout'
 import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
+import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
+import { GetStaticProps } from 'next'
 
-/**
- * Import helpers and GetStaticProps type
- */
- import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
- import { GetStaticProps } from 'next'
-
- export default function Home() {
  export default function Home({ file }) {
   const data = file.data
 
@@ -32,13 +27,7 @@ import { CMS_NAME } from '../lib/constants'
           Welcome to <a href="https://nextjs.org">Next.js!</a>
           {data.title}
          </h1>
-
-         //...
-
        </main>
-
-       //...
-
      </div>
    )
  }
