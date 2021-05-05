@@ -7,6 +7,8 @@ import {
   GithubMediaStore,
 } from 'react-tinacms-github'
 
+import { MarkdownFieldPlugin, HtmlFieldPlugin } from 'react-tinacms-editor'
+
 export default class Site extends App {
   cms: TinaCMS
 
@@ -20,6 +22,7 @@ export default class Site extends App {
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH, // e.g. 'master' or 'main' on newer repos
     })
+
 
     /**
      * 1. Create the TinaCMS instance
@@ -42,6 +45,9 @@ export default class Site extends App {
       sidebar: props.pageProps.preview,
       toolbar: props.pageProps.preview,
     })
+    this.cms.plugins.add(MarkdownFieldPlugin)
+    this.cms.plugins.add(HtmlFieldPlugin)
+
   }
 
   render() {
